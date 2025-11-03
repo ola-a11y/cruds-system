@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة المنتجات | CRUDS</title>
+
+     <!--  Favicon (Icon in browser tab) -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'/%3E%3Cpath d='M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm-40,96H88a8,8,0,0,1,0-16h80a8,8,0,0,1,0,16Zm0-40H88a8,8,0,0,1,0-16h80a8,8,0,0,1,0,16Zm0,80H88a8,8,0,0,1,0-16h80a8,8,0,0,1,0,16Z' fill='%234a69bd'/%3E%3C/svg%3E">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Link to your main stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- ======================== -->
+        <!--        SIDEBAR           -->
+        <!-- ======================== -->
+        <aside class="sidebar">
+            <h1 class="logo">CRUDS</h1>
+
+            <div class="form-container">
+                <h2>PRODUCT MANAGEMENT SYSTEM</h2>
+                
+                <input id="title" type="text" placeholder="Product Title">
+
+                <!-- Price fields grid for better layout -->
+                <div class="price-grid">
+                    <input onkeyup="getTotal()" id="price" type="number" placeholder="Price">
+                    <input onkeyup="getTotal()" id="taxes" type="number" placeholder="Taxes">
+                    <input onkeyup="getTotal()" id="ads" type="number" placeholder="Ads">
+                    <input onkeyup="getTotal()" id="discount" type="number" placeholder="Discount">
+                </div>
+
+                <!-- This button will display the total -->
+                <button id="total">Total:</button>
+
+                <input id="count" type="number" placeholder="Count">
+                <input id="category" type="text" placeholder="Category">
+
+                <button id="create" class="btn btn-primary">Create</button>
+            </div>
+        </aside>
+
+        <!-- ======================== -->
+        <!--      MAIN CONTENT        -->
+        <!-- ======================== -->
+        <main class="main-content">
+
+            <!-- Main content header (Title and Search) -->
+            <header class="main-header">
+                <h1>PRODUCT MANAGEMENT SYSTEM</h1>
+                <div class="search-box">
+                    <input id="search" onkeyup="searchDate(this.value)" type="search" placeholder="Search by Title">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </header>
+
+            <!-- Action bar (Search toggles + Delete All) -->
+            <div class="action-bar">
+                <div class="search-toggles">
+                    <button id="searchT" onclick="getSearchMood('searchT')" class="btn btn-secondary">
+                        <i class="fa-solid fa-font"></i> Search by Title
+                    </button>
+                    <button id="searchC" onclick="getSearchMood('searchC')" class="btn btn-secondary">
+                        <i class="fa-solid fa-tags"></i> Search by Category
+                    </button>
+                </div>
+
+                <!-- This div will be populated with the "Delete All" button by JS -->
+                <div id="deleteAll"></div>
+            </div>
+
+            <!-- Table wrapper (for horizontal scroll) -->
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Taxes</th>
+                            <th>Ads</th>
+                            <th>Discount</th>
+                            <th>Total</th>
+                            <th>Category</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <!-- Rows will be populated here by App.JS -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Link your JavaScript file -->
+    <script src="main.js"></script>
+</body>
+</html>
